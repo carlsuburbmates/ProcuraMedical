@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Procura Medical | Institutional Supply</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* --- Design System: Clinical Precision --- */
+    :root {
+      --bg-stone: #F4F4F0;
+      --text-main: #111111;
+      --primary-green: #1A2E22;
+      --accent-lime: #A3E635;
+      --border-color: #E0E0E0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-stone);
+      color: var(--text-main);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.04em;
+    }
+
+    .font-mono-custom {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      letter-spacing: -0.02em;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-green);
+      color: white;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.70rem;
+      letter-spacing: 0.05em;
+      padding: 1rem 2rem;
+      border-radius: 0px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary:hover {
+      background-color: #000;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      border: 1px solid #CCC;
+      color: var(--text-main);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.70rem;
+      letter-spacing: 0.05em;
+      padding: 1rem 2rem;
+      border-radius: 0px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-secondary:hover {
+      background-color: white;
+      border-color: #000;
+    }
+
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-enter { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+
+    /* FAB Menu */
+    .fab-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 50; }
+    .fab-button {
+      width: 3rem; height: 3rem; background-color: var(--text-main); color: white; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 30px rgba(0,0,0, 0.15); cursor: pointer; transition: transform 0.3s ease; border: 1px solid #333;
+    }
+    .fab-button:hover { transform: scale(1.05); }
+    .fab-menu {
+      position: absolute; bottom: 4rem; right: 0; background: white; border: 1px solid var(--text-main); width: 260px;
+      opacity: 0; transform: translateY(10px); pointer-events: none; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .fab-menu.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  </style>
+</head>
+<body>
+
+  <!-- FAB -->
+  <div class="fab-container font-mono-custom">
+    <div class="fab-menu" id="concierge-menu">
+      <div class="p-4 border-b border-[#eee] bg-[#FAFAFA]">
+        <div class="flex items-center gap-2 mb-1">
+          <div class="w-2 h-2 bg-[#A3E635] rounded-full animate-pulse"></div>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-[#2A3C32]">Specialist Online</span>
+        </div>
+        <p class="text-[10px] text-[#666]">Direct line to Melbourne procurement team.</p>
+      </div>
+      <div class="flex flex-col p-2">
+        <a href="#" class="flex items-center gap-3 p-3 hover:bg-[#F4F4F0] text-[11px] font-bold text-[#1C1C1C] transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          Request NDIS Quote
+        </a>
+        <a href="#" class="flex items-center gap-3 p-3 hover:bg-[#F4F4F0] text-[11px] font-bold text-[#1C1C1C] transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>
+          Check Price Guide
+        </a>
+      </div>
+    </div>
+    <div class="fab-button" onclick="toggleConcierge()">
+      <svg id="fab-icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <svg id="fab-icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="bg-[#111] text-white py-2 px-6 text-[10px] font-mono-custom tracking-wide border-b border-[#333]">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-6">
+        <span class="flex items-center gap-2">
+          <span class="w-2 h-2 bg-[#A3E635] rounded-full"></span>
+          <span class="opacity-90 uppercase">ISO 9001 Compliant Supply Chain</span>
+        </span>
+        <span class="hidden md:flex items-center gap-2">
+          <span class="opacity-50">|</span>
+          <span class="opacity-90 uppercase">NDIS Provider No: 40500123</span>
+        </span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="opacity-70 uppercase">Melbourne, VIC</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="sticky top-0 z-40 bg-[#F4F4F0]/95 backdrop-blur-md border-b border-[#D4D4D0] transition-all duration-300 py-5" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div class="flex items-center gap-3 cursor-pointer group">
+        <div class="w-8 h-8 bg-[#111] flex items-center justify-center text-white font-bold text-sm group-hover:bg-[#A3E635] group-hover:text-black transition-colors">P</div>
+        <div class="flex flex-col justify-center">
+          <span class="text-lg font-bold tracking-tighter leading-none text-[#1C1C1C]">PROCURA</span>
+          <span class="text-[9px] font-bold tracking-[0.2em] text-[#666] uppercase leading-none mt-1 font-mono-custom">Medical Systems</span>
+        </div>
+      </div>
+      <div class="hidden lg:flex items-center gap-10 font-mono-custom text-[10px] uppercase font-bold tracking-widest text-[#333]">
+        <a href="#" class="hover:text-black border-b border-transparent hover:border-black pb-1 transition-all">Mobility</a>
+        <a href="#" class="hover:text-black border-b border-transparent hover:border-black pb-1 transition-all">Patient Lifting</a>
+        <a href="#" class="hover:text-black border-b border-transparent hover:border-black pb-1 transition-all">Respiratory</a>
+      </div>
+      <div class="hidden lg:flex items-center gap-4">
+         <button class="bg-[#111] text-white px-5 py-2 text-[10px] font-bold uppercase tracking-widest hover:bg-[#A3E635] hover:text-black transition-colors rounded-none font-mono-custom">
+            Catalogue
+         </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="relative border-b border-[#D4D4D0] overflow-hidden bg-white">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
+      <div class="p-10 lg:p-20 flex flex-col justify-center border-r border-[#D4D4D0] z-10 bg-white">
+        <div class="mb-8 animate-enter">
+          <span class="text-[9px] font-bold uppercase tracking-widest text-[#111] border border-[#111] px-2 py-1 font-mono-custom inline-flex items-center gap-2">
+            <span class="w-1.5 h-1.5 bg-[#A3E635]"></span> Est. 2026
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.95] mb-8 text-[#111] animate-enter delay-100">
+          Institutional <br> Standards.<br> <span class="text-[#666]">Residential Comfort.</span>
+        </h1>
+        <p class="text-sm text-[#444] mb-12 leading-relaxed max-w-sm animate-enter delay-200 font-medium">
+          We bridge the gap between hospital-grade durability and modern home aesthetics. The premier procurement platform for self-managed NDIS participants and allied health professionals.
+        </p>
+        <div class="flex flex-wrap gap-4 animate-enter delay-300">
+          <a href="#collection" class="btn-primary">Explore Collection</a>
+          <a href="#" class="btn-secondary">NDIS User Guide</a>
+        </div>
+      </div>
+      <div class="relative bg-[#F2F2F0] flex items-center justify-center overflow-hidden h-[400px] lg:h-auto">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#A3E635] opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="relative w-[80%] h-[70%] bg-white shadow-xl rounded-none overflow-hidden border border-[#eee] animate-enter delay-200">
+           <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop" alt="Modern accessible living room interior" class="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-[2s] grayscale-[20%] contrast-110">
+           <div class="absolute bottom-0 left-0 bg-white/95 backdrop-blur-md px-6 py-4 border-t border-r border-[#eee]">
+             <span class="block text-[9px] font-bold uppercase tracking-widest text-[#888] font-mono-custom mb-1">Context</span>
+             <span class="block text-xs font-bold text-[#1C1C1C] uppercase tracking-wide">Restorative Living</span>
+           </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NDIS Search Section -->
+  <section class="bg-[#111] text-white py-24">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="border border-[#333] p-12 rounded-none hover:border-[#A3E635] transition-colors group">
+           <span class="text-[#A3E635] text-[9px] font-bold uppercase tracking-widest mb-6 block font-mono-custom">NDIS Decoder</span>
+           <h3 class="text-3xl font-bold mb-4 tracking-tighter">Check Your Funding.</h3>
+           <p class="text-white/60 text-sm leading-relaxed mb-6 font-medium">
+             Enter a product name to see the exact NDIS Support Item Code and Price Cap.
+           </p>
+           
+           <div class="relative max-w-md">
+             <input type="text" id="ndis-search-input" placeholder="e.g. Lift Chair, Hoist" class="w-full bg-[#222] border border-[#444] text-white p-4 text-xs font-bold uppercase tracking-widest focus:border-[#A3E635] outline-none" oninput="filterNdisResults()">
+           </div>
+           
+           <div id="ndis-results-container" class="mt-4 max-w-md"></div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-[#D4D4D0] pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-sm mb-16">
+      <div class="col-span-1">
+        <div class="flex items-center gap-3 mb-6">
+           <div class="w-8 h-8 bg-[#111] flex items-center justify-center text-white font-bold text-sm rounded-none">P</div>
+           <span class="text-xl font-bold tracking-tighter text-[#1C1C1C]">PROCURA</span>
+        </div>
+        <p class="text-[11px] text-[#666] leading-relaxed max-w-xs font-medium">
+          Procura Medical is Australia's leading digital procurement platform for self-managed NDIS participants.
+        </p>
+      </div>
+      <div>
+        <span class="block text-[10px] font-bold uppercase tracking-widest text-[#111] mb-6 font-mono-custom">Procurement</span>
+        <ul class="space-y-3 text-[11px] text-[#666] font-medium uppercase tracking-wide">
+          <li><a href="#" class="hover:text-black hover:underline">Mobility Systems</a></li>
+          <li><a href="#" class="hover:text-black hover:underline">Patient Handling</a></li>
+          <li><a href="#" class="hover:text-black hover:underline">Respiratory Care</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-[#f0f0f0] flex flex-col md:flex-row justify-between items-center text-[9px] text-[#999] font-bold uppercase tracking-widest font-mono-custom">
+       <span>© 2026 Procura Medical Pty Ltd</span>
+       <span>ABN: 82 194 882 001</span>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navbar.classList.add('py-4', 'shadow-sm');
+        navbar.classList.remove('py-5');
+      } else {
+        navbar.classList.add('py-5');
+        navbar.classList.remove('py-4', 'shadow-sm');
+      }
+    });
+
+    const fabMenu = document.getElementById('concierge-menu');
+    const fabOpen = document.getElementById('fab-icon-open');
+    const fabClose = document.getElementById('fab-icon-close');
+    let isFabOpen = false;
+
+    function toggleConcierge() {
+      isFabOpen = !isFabOpen;
+      if (isFabOpen) {
+        fabMenu.classList.add('active');
+        fabOpen.classList.add('hidden');
+        fabClose.classList.remove('hidden');
+      } else {
+        fabMenu.classList.remove('active');
+        fabOpen.classList.remove('hidden');
+        fabClose.classList.add('hidden');
+      }
+    }
+
+    const ndisDatabase = [
+      { name: 'Lift Chair (Dual Motor)', code: '05_123_0103_1_2', category: 'Personal Care', price_cap: '$2,850.00' },
+      { name: 'Lift Chair (Single Motor)', code: '05_123_0103_1_2', category: 'Personal Care', price_cap: '$1,800.00' },
+      { name: 'Mobile Hoist', code: '05_312_0103_1_2', category: 'Household Tasks', price_cap: 'Benchmark' },
+      { name: 'Oxygen Concentrator', code: '05_512_0103_1_2', category: 'Respiratory', price_cap: 'Quote' }
+    ];
+
+    const ndisResults = document.getElementById('ndis-results-container');
+    const ndisInput = document.getElementById('ndis-search-input');
+
+    function filterNdisResults() {
+      const query = ndisInput.value.toLowerCase();
+      ndisResults.innerHTML = ''; 
+
+      if (query.length < 2) return;
+
+      const filtered = ndisDatabase.filter(item => item.name.toLowerCase().includes(query) || item.code.includes(query));
+
+      if (filtered.length > 0) {
+        filtered.forEach(item => {
+          const resultItem = document.createElement('div');
+          resultItem.className = 'bg-[#222] p-3 border-b border-[#333] mb-1';
+          resultItem.innerHTML = `
+            <div class="flex justify-between items-start">
+                <div>
+                    <div class="text-[10px] font-bold text-white uppercase tracking-wide">${item.name}</div>
+                    <div class="text-[9px] text-[#888] mt-1">${item.category}</div>
+                </div>
+                <div class="text-right">
+                    <div class="text-[9px] font-mono-custom font-bold text-[#A3E635] bg-[#A3E635]/10 px-2 py-1">${item.code}</div>
+                </div>
+            </div>
+          `;
+          ndisResults.appendChild(resultItem);
+        });
+      } else {
+        ndisResults.innerHTML = '<div class="text-[10px] text-[#666] py-2 italic">Item not found in local database.</div>';
+      }
+    }
+  </script>
+</body>
+</html>

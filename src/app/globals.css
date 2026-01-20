@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --color-background: var(--bg-alabaster);
+  --color-foreground: var(--text-main);
+  --color-muted: var(--text-muted);
+  --color-accent: var(--accent-green);
+  
+  --font-sans: var(--font-inter);
+  
+  --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-scale-in: scaleIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  /* Ultra-Premium Palette */
+  --bg-alabaster: #F4F5F4; /* Slightly cooler, more stone-like */
+  --bg-pure: #FFFFFF;
+  --text-main: #050505;    /* Ink black, not grey-black */
+  --text-muted: #555555;   /* Neutral grey */
+  --accent-green: #2E4033; /* Deep forest/botanical green, much more sophisticated than bright green */
+  
+  --font-inter: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    background-color: var(--bg-alabaster);
+    color: var(--text-main);
+    letter-spacing: -0.015em; /* Tighter tracking for premium feel */
+  }
+
+  /* Typography Hierarchy - Swiss Style */
+  h1, .h1 {
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  
+  h2, .h2 {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  /* Million Dollar Buttons */
+  .btn-primary {
+    @apply h-12 px-8 bg-[#050505] text-white text-[13px] font-semibold uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-[#222] hover:scale-[1.02] flex items-center justify-center shadow-lg hover:shadow-xl active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply h-12 px-8 bg-white border border-[#E5E5E5] text-[#050505] text-[13px] font-semibold uppercase tracking-widest rounded-full transition-all duration-300 hover:border-[#050505] hover:bg-transparent flex items-center justify-center active:scale-95;
+  }
+  
+  .btn-glass {
+    @apply h-12 px-8 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[13px] font-semibold uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-white/20 flex items-center justify-center;
+  }
+
+  /* Utility */
+  .container-wide {
+    @apply max-w-[1800px] mx-auto px-4 md:px-8;
+  }
+  
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-xl border border-white/40 shadow-sm;
+  }
 }
