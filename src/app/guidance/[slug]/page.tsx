@@ -17,7 +17,7 @@ export default async function GuidePage(props: Props) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-6 md:px-12 py-20 bg-white min-h-screen">
+    <div className="max-w-4xl mx-auto px-6 md:px-12 py-20 bg-[var(--bg-alabaster)] min-h-screen">
       <Link href="/guidance" className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-[#888] hover:text-[#050505] mb-12 transition-colors">
         <ArrowLeft className="w-3 h-3 mr-2" /> Back to Framework
       </Link>

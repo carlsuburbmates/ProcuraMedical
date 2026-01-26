@@ -37,7 +37,7 @@ export function DecisionFramework() {
   ];
 
   return (
-    <section className="min-h-dvh w-full relative flex flex-col items-center justify-center py-20 overflow-hidden bg-[#F4F5F4] snap-start">
+    <section className="min-h-dvh w-full relative flex flex-col items-center justify-center py-20 overflow-hidden bg-[var(--bg-alabaster)] snap-start">
       <div className="container-wide w-full mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
         <div>
           <h2 className="text-5xl md:text-7xl font-medium text-[#050505] mb-6 tracking-tighter">

@@ -4,32 +4,51 @@
   --color-background: var(--bg-alabaster);
   --color-foreground: var(--text-main);
   --color-muted: var(--text-muted);
-  --color-accent: var(--text-main); /* Monochrome authority */
-  
+  --color-accent: var(--text-main);
+  /* Monochrome authority */
+
   --font-sans: var(--font-inter);
-  
+
   --animate-fade-in-up: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-scale-in: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  
+
   @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  
+
   @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.99); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(0.99);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }
 
 :root {
-  /* AUTHORITY PALETTE (Tesla-like) */
-  --bg-alabaster: #F4F5F4; /* Cold, technical stone */
+  /* AUTHORITY PALETTE */
+  /* Complex Neutral Strategy: #EEF1F0 - Distinct Surgical/Sage White */
+  /* Replaced #F3F4F3 which was too subtle */
+  --bg-complex-neutral: #EEF1F0;
+  --bg-alabaster: var(--bg-complex-neutral);
+
   --bg-pure: #FFFFFF;
-  --text-main: #050505;    /* Ink Black */
-  --text-muted: #595959;   /* Technical Grey */
+  --text-main: #050505;
+  --text-muted: #595959;
   --border-subtle: #E5E5E5;
-  
+
   --font-inter: 'Inter', system-ui, sans-serif;
 }
 
@@ -39,21 +58,23 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   body {
-    background-color: var(--bg-alabaster);
+    background-color: var(--bg-complex-neutral);
     color: var(--text-main);
-    letter-spacing: -0.02em; /* Tighter tracking for authority */
+    letter-spacing: -0.02em;
   }
-  
+
   /* Typography Hierarchy - Information Density */
-  h1, .h1 {
+  h1,
+  .h1 {
     font-weight: 500;
     letter-spacing: -0.03em;
     line-height: 1.05;
   }
-  
-  h2, .h2 {
+
+  h2,
+  .h2 {
     font-weight: 500;
     letter-spacing: -0.025em;
   }
@@ -67,16 +88,17 @@
 }
 
 @layer components {
+
   /* COMPONENT: CTAButton (Primary) */
   .btn-primary {
     @apply h-11 px-6 bg-[#050505] text-white text-[13px] font-medium transition-all duration-200 hover:bg-[#222] flex items-center justify-center tracking-wide min-w-[140px];
   }
-  
+
   /* COMPONENT: CTAButton (Secondary) */
   .btn-secondary {
     @apply h-11 px-6 bg-transparent border border-black/20 text-[#050505] text-[13px] font-medium transition-all duration-200 hover:border-[#050505] hover:bg-transparent flex items-center justify-center tracking-wide min-w-[140px];
   }
-  
+
   /* Utilities */
   .container-wide {
     @apply max-w-[1600px] mx-auto px-6 md:px-12;
@@ -85,11 +107,11 @@
   .container-narrow {
     @apply max-w-4xl mx-auto px-6 md:px-12;
   }
-  
+
   .glass-header {
     @apply bg-white/85 backdrop-blur-md border-b border-black/5;
   }
-  
+
   .glass-panel {
     @apply bg-white border border-black/5 shadow-sm;
   }
