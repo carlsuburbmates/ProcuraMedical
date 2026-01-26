@@ -1,46 +1,37 @@
 import { notFound } from "next/navigation";
-import { PRODUCTS } from "@/lib/data";
-import { CheckoutFlow } from "@/components/checkout/checkout-flow";
-import { CheckoutSummary } from "@/components/checkout/checkout-summary";
-import Link from "next/link";
-import { Lock } from "lucide-react";
+import { ProcurementLogicContainer } from "@/components/buy/procurement-logic-container";
 
-export default async function BuyPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const product = PRODUCTS.find((p) => p.slug === slug);
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+}
+
+// REUSING MOCK DB FOR CONSISTENCY (Ideally shared utils, but duplication is fine for Step 5 build speed)
+const PRODUCTS_DB: Record<string, Product> = {
+  "shower-commode": { id: "h1", name: "Tilt-in-Space Shower Commode", price: 2450 },
+  "toilet-aid": { id: "h2", name: "Height-Adjustable Over-Toilet Aid", price: 420 },
+  "forearm-walker": { id: "m1", name: "Forearm Support Walker", price: 890 },
+  "tilt-wheelchair": { id: "m2", name: "Manual Tilt-in-Space Wheelchair", price: 3200 },
+  "therapy-device": { id: "r1", name: "Upper-Limb Home Therapy Device", price: 1200 },
+  "balance-platform": { id: "r2", name: "Balance Training Platform", price: 1850 },
+};
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export default async function BuyPage(props: Props) {
+  const params = await props.params;
+  const product = PRODUCTS_DB[params.slug];
 
   if (!product) {
-    return notFound();
+    notFound();
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F3F1]">
-      {/* Checkout Header (Minimal) */}
-      <header className="h-24 bg-white/90 backdrop-blur-md border-b border-gray-100 flex items-center justify-between px-6 md:px-12 fixed w-full top-0 z-50">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="w-8 h-8 flex items-center justify-center bg-[#171a20] text-white font-[900] text-[18px] rounded-[2px]">P</div>
-          <span className="text-[14px] font-bold tracking-widest text-[#171a20] uppercase">Procura</span>
-        </Link>
-        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[#108e66] bg-green-50 px-4 py-2 rounded-full border border-green-100">
-          <Lock className="w-3 h-3" /> Secure Checkout
-        </div>
-      </header>
-
-      <div className="max-w-6xl mx-auto px-6 md:px-12 pt-36 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Main Flow */}
-          <div className="lg:col-span-7">
-            <CheckoutFlow />
-          </div>
-
-          {/* Sidebar Summary */}
-          <div className="lg:col-span-5 hidden lg:block">
-            <div className="sticky top-32">
-              <CheckoutSummary product={product} />
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="container-wide py-12 md:py-24 bg-alabaster min-h-screen">
+      <ProcurementLogicContainer product={{ ...product, slug: params.slug }} />
     </div>
   );
 }

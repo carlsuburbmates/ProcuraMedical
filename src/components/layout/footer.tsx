@@ -4,56 +4,53 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-secondary/30 border-t border-border mt-auto">
-      <div className="mx-auto max-w-7xl px-6 md:px-12 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* Brand */}
-          <div className="space-y-4">
-            <span className="text-lg font-bold tracking-tight">Procura Medical</span>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Premium procurement platform for NDIS participants. 
-              Simplifying access to world-class healthcare systems.
-            </p>
-          </div>
-
-          {/* Systems */}
-          <div>
-            <h4 className="font-medium mb-6">Systems</h4>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="/systems/mobility" className="hover:text-primary transition-colors">Mobility</Link></li>
-              <li><Link href="/systems/hygiene" className="hover:text-primary transition-colors">Hygiene</Link></li>
-              <li><Link href="/systems/rehab" className="hover:text-primary transition-colors">Rehab Tech</Link></li>
-              <li><Link href="/systems" className="hover:text-primary transition-colors">View All</Link></li>
-            </ul>
-          </div>
-
-          {/* Support */}
-          <div>
-            <h4 className="font-medium mb-6">Support</h4>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
-              <li><Link href="/faq" className="hover:text-primary transition-colors">FAQs</Link></li>
-              <li><Link href="/how-it-works" className="hover:text-primary transition-colors">How it Works</Link></li>
-              <li><Link href="/track-order" className="hover:text-primary transition-colors">Track Order</Link></li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="font-medium mb-6">Policies</h4>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="/shipping" className="hover:text-primary transition-colors">Shipping Policy</Link></li>
-              <li><Link href="/returns" className="hover:text-primary transition-colors">Returns & Faults</Link></li>
-              <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-primary transition-colors">Terms & Conditions</Link></li>
-            </ul>
-          </div>
+    <footer className="bg-background border-t border-black/5 py-16 mt-auto">
+      <div className="container-wide grid grid-cols-1 md:grid-cols-4 gap-12">
+        {/* Brand */}
+        <div className="flex flex-col gap-4">
+          <span className="text-lg font-medium tracking-tight text-black">
+            Procura Medical
+          </span>
+          <p className="text-[13px] leading-relaxed max-w-xs">
+            Advanced infrastructure for hygiene, mobility, and rehabilitation. 
+            Procurement-ready for NDIS participants.
+          </p>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
-          <p>&copy; {currentYear} Procura Medical. All rights reserved.</p>
-          <p>ABN: XX XXX XXX XXX</p>
+        {/* Systems */}
+        <div className="flex flex-col gap-3">
+          <h4 className="text-[11px] uppercase tracking-widest font-semibold text-black mb-1">Systems</h4>
+          <Link href="/systems/hygiene" className="text-[13px] text-muted hover:text-black transition-colors">Hygiene</Link>
+          <Link href="/systems/mobility" className="text-[13px] text-muted hover:text-black transition-colors">Mobility</Link>
+          <Link href="/systems/rehab" className="text-[13px] text-muted hover:text-black transition-colors">Rehab</Link>
         </div>
+
+        {/* Support & Company */}
+        <div className="flex flex-col gap-3">
+          <h4 className="text-[11px] uppercase tracking-widest font-semibold text-black mb-1">Company</h4>
+          <Link href="/about" className="text-[13px] text-muted hover:text-black transition-colors">About</Link>
+          <Link href="/contact" className="text-[13px] text-muted hover:text-black transition-colors">Support</Link>
+          <Link href="/how-it-works" className="text-[13px] text-muted hover:text-black transition-colors">How it works</Link>
+          <Link href="/faq" className="text-[13px] text-muted hover:text-black transition-colors">FAQ</Link>
+        </div>
+
+        {/* Policies */}
+        <div className="flex flex-col gap-3">
+          <h4 className="text-[11px] uppercase tracking-widest font-semibold text-black mb-1">Legal</h4>
+          <Link href="/shipping" className="text-[13px] text-muted hover:text-black transition-colors">Shipping</Link>
+          <Link href="/returns" className="text-[13px] text-muted hover:text-black transition-colors">Returns</Link>
+          <Link href="/privacy" className="text-[13px] text-muted hover:text-black transition-colors">Privacy Policy</Link>
+          <Link href="/terms" className="text-[13px] text-muted hover:text-black transition-colors">Terms of Service</Link>
+        </div>
+      </div>
+
+      <div className="container-wide mt-16 pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <p className="text-[11px] text-muted">
+          © {currentYear} Procura Medical. All rights reserved. ABN [PENDING].
+        </p>
+        <p className="text-[11px] text-muted">
+          Australian Owned & Operated.
+        </p>
       </div>
     </footer>
   );

@@ -1,54 +1,40 @@
-export default function ReturnsPolicy() {
+export default function ReturnsPage() {
   return (
-    <>
-      <h1>Returns, Faults, and Warranties</h1>
-      <p><strong>Version:</strong> v1.1<br/><strong>Last updated:</strong> 2026-01-20</p>
+    <div className="container-wide py-12 md:py-24 max-w-[800px] mx-auto">
+      <h1 className="h1 mb-8">Returns & Refunds</h1>
       
-      <hr className="my-8 border-gray-200" />
+      <div className="prose prose-neutral max-w-none space-y-8 text-sm leading-relaxed text-muted">
+        <section>
+          <h2 className="text-black font-medium mb-3 uppercase tracking-wide text-xs">Consumer Guarantees</h2>
+          <p>
+            Our goods come with guarantees that cannot be excluded under the Australian Consumer Law. 
+            You are entitled to a replacement or refund for a major failure and compensation for any other 
+            reasonably foreseeable loss or damage. You are also entitled to have the goods repaired or 
+            replaced if the goods fail to be of acceptable quality and the failure does not amount to a major failure.
+          </p>
+        </section>
 
-      <h2>1. Your rights (Australian Consumer Law)</h2>
-      <p>
-        Our goods come with guarantees that cannot be excluded under the Australian Consumer Law.
-        Warranties apply in addition to ACL rights.
-      </p>
+        <section>
+          <h2 className="text-black font-medium mb-3 uppercase tracking-wide text-xs">Change of Mind</h2>
+          <p>
+            Due to the hygiene and clinical nature of our products, we typically do not offer refunds for change of mind 
+            once an item has been dispatched or used. Ensure you have engaged with the Guidance Hub or a clinician 
+            to verify fit and suitability before purchase.
+          </p>
+        </section>
 
-      <h2>2. Change-of-mind returns</h2>
-      <p>
-        The rules in this section apply only to change-of-mind situations and do not limit your rights if there is a problem with the product under the Australian Consumer Law.
-      </p>
-
-      <h3>2.1 Hygiene and personal-care items</h3>
-      <p>For hygiene essentials and personal-care items:</p>
-      <ul>
-        <li>Change-of-mind returns are generally not accepted once packaging is opened or where the item is not suitable for resale due to health/safety reasons.</li>
-        <li>If the item is unopened, unused, and in original sealed packaging, a change-of-mind return may be considered case-by-case.</li>
-      </ul>
-
-      <h3>2.2 Other assistive products</h3>
-      <p>For non-hygiene items, change-of-mind returns may be considered only if:</p>
-      <ul>
-        <li>unused and in resale condition, and</li>
-        <li>all packaging/accessories/manuals included, and</li>
-        <li>requested promptly after delivery.</li>
-      </ul>
-
-      <h3>2.3 Fees and shipping (change-of-mind only)</h3>
-      <p>
-        For approved change-of-mind returns, return shipping is the customer's responsibility.
-        Any inspection/processing approach applies only to change-of-mind returns, never to ACL remedies.
-      </p>
-
-      <h2>3. Faults, defects, wrong items (ACL remedies)</h2>
-      <p>If an item is faulty, damaged on arrival, or not what you ordered:</p>
-      <ul>
-        <li>contact us with order details and photos where relevant,</li>
-        <li>we may assess and coordinate repair, replacement, or refund depending on the issue.</li>
-      </ul>
-
-      <h2>4. Manufacturer warranties</h2>
-      <p>
-        Manufacturer warranties may apply in addition to ACL rights; they do not replace them.
-      </p>
-    </>
+        <section>
+          <h2 className="text-black font-medium mb-3 uppercase tracking-wide text-xs">Return Process</h2>
+          <p>
+            To initiate a return for a defective item:
+          </p>
+          <ul className="list-disc pl-5 space-y-2 mt-2">
+            <li>Contact Support with your order number and photo evidence of the fault.</li>
+            <li>Wait for a Return Authorization (RA) number.</li>
+            <li>Ship the item back using the provided instructions.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
   );
 }

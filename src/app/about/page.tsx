@@ -1,31 +1,38 @@
 export default function AboutPage() {
   return (
-    <div className="bg-[#F2F3F1] min-h-screen pt-32 pb-24">
-      <div className="max-w-4xl mx-auto px-6">
-        <h1 className="text-4xl md:text-5xl font-medium text-[#171a20] mb-6 tracking-tight">
-          About Procura
-        </h1>
-        <p className="text-lg text-[#393c41] leading-relaxed mb-10">
-          Procura Medical is a storefront-first procurement platform designed to make it easier
-          to identify suitable equipment, validate fit considerations, and proceed through a
-          clear purchase flow.
-        </p>
+    <div className="container-wide py-12 md:py-24 max-w-[800px] mx-auto">
+      <h1 className="h1 mb-2">About Procura Medical</h1>
+      <p className="text-lg text-black font-medium mb-12">
+        Advanced infrastructure for safe, compliant care environments.
+      </p>
+      
+      <div className="space-y-12 text-[15px] leading-relaxed text-muted">
+        <section>
+          <p>
+            Procura Medical simplifies the procurement of complex assistive technology. 
+            We bridge the gap between clinical specification and efficient supply, ensuring 
+            that NDIS participants and healthcare providers can access required infrastructure 
+            without administrative friction.
+          </p>
+        </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white rounded-lg p-8 shadow-sm">
-            <h2 className="text-xl font-semibold text-[#171a20] mb-3">Systems, not shelves</h2>
-            <p className="text-sm text-[#393c41] leading-relaxed">
-              We organise products by function and use-case so decisions stay clear.
-            </p>
-          </div>
-          <div className="bg-white rounded-lg p-8 shadow-sm">
-            <h2 className="text-xl font-semibold text-[#171a20] mb-3">Built for accountability</h2>
-            <p className="text-sm text-[#393c41] leading-relaxed">
-              Funding and invoice logic stays inside the checkout container, not across the
-              browsing experience.
-            </p>
-          </div>
-        </div>
+        <section>
+          <h2 className="text-black font-medium mb-4 uppercase tracking-wide text-xs">Our Function</h2>
+          <p>
+            We operate as a specialized procurement platform. We vet suppliers for compliance, 
+            quality, and stock reliability. We provide a single interface for managing funding 
+            approval, documentation, and logistics, removing the complexity of multi-vendor management.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-black font-medium mb-4 uppercase tracking-wide text-xs">Guided by Standards</h2>
+          <p>
+            Our catalogue is curated based on technical specification, safety load ratings, and 
+            regulatory compliance. We prioritize equipment that meets Australian Standards and 
+            demonstrates long-term durability in daily care settings.
+          </p>
+        </section>
       </div>
     </div>
   );

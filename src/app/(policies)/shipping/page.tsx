@@ -1,45 +1,44 @@
-export default function ShippingPolicy() {
+export default function ShippingPage() {
   return (
-    <>
-      <h1>Shipping Policy</h1>
-      <p><strong>Version:</strong> v1.1<br/><strong>Last updated:</strong> 2026-01-20</p>
+    <div className="container-wide py-12 md:py-24 max-w-[800px] mx-auto">
+      <h1 className="h1 mb-8">Shipping Policy</h1>
       
-      <hr className="my-8 border-gray-200" />
+      <div className="prose prose-neutral max-w-none space-y-8 text-sm leading-relaxed text-muted">
+        <section>
+          <h2 className="text-black font-medium mb-3 uppercase tracking-wide text-xs">Dispatch Standards</h2>
+          <p>
+            Orders are dispatched only after payment is confirmed or a valid plan-managed invoice is approved. 
+            Standard dispatch time is 2-5 business days for in-stock items. Lead times for specific configuratons 
+            are noted on the product page.
+          </p>
+        </section>
 
-      <h2>1. Where we ship</h2>
-      <p>We ship to Australian addresses.</p>
+        <section>
+          <h2 className="text-black font-medium mb-3 uppercase tracking-wide text-xs">Delivery Methods</h2>
+          <p>
+            We utilize specialized freight partners for bulky rehabilitation equipment. 
+            Tailgate delivery is standard for residential addresses. Setup and installation 
+            are not included unless explicitly specified in the order confirmation.
+          </p>
+        </section>
 
-      <h2>2. How shipping works</h2>
-      <p>Many items are shipped directly from our supplier network to your nominated address.</p>
+        <section>
+          <h2 className="text-black font-medium mb-3 uppercase tracking-wide text-xs">Damages & Transit Insurance</h2>
+          <p>
+            All shipments are insured for transit damage. You must inspect the package upon arrival. 
+            Report any visible damage to the courier immediately and contact Procura Medical support 
+            within 24 hours of receipt.
+          </p>
+        </section>
 
-      <h2>3. Typical timeframes</h2>
-      <p>
-        Many items arrive within typical carrier timeframes (often around 3–7 business days in metro areas), but timing can vary based on the product, supplier, stock status, and location.
-      </p>
-      <p>
-        We will communicate any known lead time differences during the order process and/or in your order confirmation.
-      </p>
-
-      <h2>4. Tracking</h2>
-      <p>Where tracking is available, we provide tracking details once dispatched.</p>
-
-      <h2>5. Delays and what happens next</h2>
-      <p>
-        If your order is delayed, we will provide an update and options that may include waiting, switching to an alternative item (where feasible), or cancellation depending on order status.
-      </p>
-      <p>
-        Nothing in this policy limits your rights under ACL.
-      </p>
-
-      <h2>6. Incorrect address / failed delivery</h2>
-      <p>
-        Please ensure delivery details are correct. If an item is returned due to incorrect address or failed delivery, additional shipping fees may apply for re-delivery.
-      </p>
-
-      <h2>7. Damage in transit</h2>
-      <p>
-        If an item arrives damaged, contact us as soon as practical so we can coordinate a remedy. This does not limit ACL rights.
-      </p>
-    </>
+        <section>
+           <h2 className="text-black font-medium mb-3 uppercase tracking-wide text-xs">Blind Shipping</h2>
+           <p>
+             All orders are shipped with neutral packaging documentation. Procura Medical acts as the primary 
+             vendor of record for all NDIS documentation purposes.
+           </p>
+        </section>
+      </div>
+    </div>
   );
 }

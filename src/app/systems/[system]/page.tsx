@@ -1,116 +1,107 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PRODUCTS, SYSTEMS } from "@/lib/data";
-import { ArrowRight, Filter } from "lucide-react";
+import { SystemIntro } from "@/components/systems/system-intro";
+import { CuratedProductGrid } from "@/components/systems/curated-product-grid";
+import Link from "next/link";
 
-export default async function SystemPage({ params }: { params: Promise<{ system: string }> }) {
-  const { system: systemId } = await params;
-  
-  const system = SYSTEMS.find((s) => s.id === systemId);
-  if (!system) {
-    return notFound();
+// SSOT CONTENT MAPPING
+const SYSTEMS_DATA: Record<string, { name: string; descriptor: string; description: string }> = {
+  hygiene: {
+    name: "Hygiene",
+    descriptor: "Bathroom and Toilet Infrastructure",
+    description: "Hygiene equipment built for stability, clearance, and cleanability—spec-led, fit-checked, procurement-ready.",
+  },
+  mobility: {
+    name: "Mobility",
+    descriptor: "Mobility and Transfer Infrastructure",
+    description: "Mobility equipment selected for load, geometry, and adjustability—built to reduce friction in daily movement.",
+  },
+  rehab: {
+    name: "Rehab",
+    descriptor: "Rehabilitation and Tech Systems",
+    description: "Rehab tools chosen for repeatability and safety—clear requirements, clear limits, no inflated claims.",
+  },
+};
+
+// MOCK PRODUCT DATA (To be replaced by real DB fetch later)
+// Aligns with SSOT Section P (Initial 6-SKU slate)
+const MOCK_PRODUCTS = {
+  hygiene: [
+    { id: "h1", name: "Tilt-in-Space Shower Commode", slug: "shower-commode", price_base: 2450, lead_time: "In Stock - Dispatch 48h", image_placeholder: "Commode" },
+    { id: "h2", name: "Height-Adjustable Over-Toilet Aid", slug: "toilet-aid", price_base: 420, lead_time: "In Stock", image_placeholder: "Toilet Aid" },
+  ],
+  mobility: [
+    { id: "m1", name: "Forearm Support Walker", slug: "forearm-walker", price_base: 890, lead_time: "In Stock", image_placeholder: "Walker" },
+    { id: "m2", name: "Manual Tilt-in-Space Wheelchair", slug: "tilt-wheelchair", price_base: 3200, lead_time: "Lead Time: 2 Weeks", image_placeholder: "Wheelchair" },
+    { id: "m3", name: "Premium Transfer Board", slug: "transfer-board", price_base: 180, lead_time: "In Stock", image_placeholder: "Transfer Board" },
+  ],
+  rehab: [
+    { id: "r1", name: "Upper-Limb Home Therapy Device", slug: "therapy-device", price_base: 1200, lead_time: "In Stock", image_placeholder: "Upper Limb" },
+    { id: "r2", name: "Balance Training Platform", slug: "balance-platform", price_base: 1850, lead_time: "Lead Time: 1 Week", image_placeholder: "Balance" },
+  ],
+};
+
+// Correct Next.js 15+ Params handling
+type Props = {
+  params: Promise<{ system: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export default async function SystemPage(props: Props) {
+  const params = await props.params;
+  const systemKey = params.system.toLowerCase();
+  const systemData = SYSTEMS_DATA[systemKey];
+  const products = MOCK_PRODUCTS[systemKey as keyof typeof MOCK_PRODUCTS] || [];
+
+  if (!systemData) {
+    notFound();
   }
 
-  const products = PRODUCTS.filter((p) => p.system === systemId);
-
   return (
-    <div className="bg-[#F2F3F1] min-h-screen pt-32 pb-24">
-      {/* 1. System Intro */}
-      <div className="max-w-7xl mx-auto px-6 mb-12">
-        <div className="mb-4">
-           <Link href="/systems" className="text-xs font-bold uppercase tracking-wide text-gray-500 hover:text-black transition-colors">
-             Systems
-           </Link>
-           <span className="mx-2 text-gray-400">/</span>
-           <span className="text-xs font-bold uppercase tracking-wide text-[#171a20]">{system.title}</span>
-        </div>
-        
-        <h1 className="text-4xl md:text-5xl font-medium text-[#171a20] mb-6 tracking-tight">
-          {system.title}
-        </h1>
-        <p className="text-lg text-[#393c41] max-w-3xl font-normal leading-relaxed">
-          This system includes products designed to support {system.description.toLowerCase()}.
-          Selections prioritise safety, adjustability, and real-world use.
-        </p>
-      </div>
+    <div className="flex flex-col min-h-screen">
+      <SystemIntro
+        name={systemData.name}
+        descriptor={systemData.descriptor}
+        description={systemData.description}
+      />
 
-      <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-12">
-        {/* 3. Light Filters (Sidebar) */}
-        <aside className="w-full lg:w-64 flex-shrink-0">
-           <div className="sticky top-32 space-y-8">
-             <div className="flex items-center gap-2 text-sm font-bold text-[#171a20] border-b border-gray-200 pb-2">
-               <Filter className="w-4 h-4" /> Refine Selection
-             </div>
-             
-             {/* Filter Groups */}
-             <div className="space-y-2">
-               <h4 className="text-xs font-bold uppercase tracking-wide text-gray-500 mb-2">By Load Capacity</h4>
-               <label className="flex items-center gap-2 text-sm text-[#393c41] cursor-pointer hover:text-black">
-                 <input type="checkbox" className="rounded border-gray-300 text-black focus:ring-0" /> Standard (up to 120kg)
-               </label>
-               <label className="flex items-center gap-2 text-sm text-[#393c41] cursor-pointer hover:text-black">
-                 <input type="checkbox" className="rounded border-gray-300 text-black focus:ring-0" /> Bariatric (150kg+)
-               </label>
-             </div>
+      <div className="container-wide py-12">
+        <div className="flex flex-col md:flex-row gap-12">
+          {/* Section 4: Light Filters (Placeholder for now, keeping generic as per SSOT "Light filters") */}
+          <aside className="w-full md:w-64 shrink-0">
+            <div className="border border-black/5 p-6 bg-white sticky top-24">
+              <h3 className="text-[11px] font-bold uppercase tracking-widest mb-4">Specifications</h3>
+              <div className="space-y-4">
+                <p className="text-sm text-muted">Filter by Specification:</p>
+                {/* Mock Filters */}
+                <div className="flex flex-col gap-2">
+                  <label className="flex items-center gap-2 text-sm text-black">
+                    <input type="checkbox" className="rounded border-gray-300" />
+                    <span>SWL &gt; 150kg</span>
+                  </label>
+                  <label className="flex items-center gap-2 text-sm text-black">
+                    <input type="checkbox" className="rounded border-gray-300" />
+                    <span>Narrow Width</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </aside>
 
-             <div className="space-y-2">
-               <h4 className="text-xs font-bold uppercase tracking-wide text-gray-500 mb-2">By Size</h4>
-               <label className="flex items-center gap-2 text-sm text-[#393c41] cursor-pointer hover:text-black">
-                 <input type="checkbox" className="rounded border-gray-300 text-black focus:ring-0" /> Paediatric
-               </label>
-               <label className="flex items-center gap-2 text-sm text-[#393c41] cursor-pointer hover:text-black">
-                 <input type="checkbox" className="rounded border-gray-300 text-black focus:ring-0" /> Adult
-               </label>
-             </div>
-           </div>
-        </aside>
+          <main className="flex-1">
+            <h2 className="text-[13px] font-medium text-muted uppercase tracking-wide mb-6">
+              Available Systems ({products.length})
+            </h2>
+            <CuratedProductGrid products={products} />
 
-        {/* 2. Curated Product List */}
-        <div className="flex-grow">
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-             {products.length > 0 ? (
-               products.map((product) => (
-                 <Link 
-                   key={product.id} 
-                   href={`/p/${product.slug}`}
-                   className="group bg-white rounded-lg p-6 shadow-sm border border-transparent hover:border-gray-200 hover:shadow-md transition-all duration-300 flex flex-col"
-                 >
-                   <div className="aspect-square bg-gray-100 rounded-md mb-6 overflow-hidden relative">
-                     {/* Placeholder Image */}
-                     <div className="absolute inset-0 bg-gray-200 mix-blend-multiply opacity-50" />
-                     {product.images[0] && (
-                        <img 
-                          src={product.images[0]} 
-                          alt={product.name} 
-                          className="w-full h-full object-cover mix-blend-multiply opacity-90 transition-transform duration-500 group-hover:scale-105" 
-                        />
-                     )}
-                   </div>
-                   
-                   <div className="flex-grow">
-                      <h3 className="text-xl font-bold text-[#171a20] mb-2 group-hover:underline decoration-1 underline-offset-4">{product.name}</h3>
-                      {/* Key Spec Highlight */}
-                      <p className="text-xs font-medium text-gray-500 mb-4 uppercase tracking-wide">
-                        {Object.entries(product.specs)[0]?.[0]}: {Object.entries(product.specs)[0]?.[1]}
-                      </p>
-                   </div>
-                   
-                   <div className="flex items-end justify-between mt-4 border-t border-gray-100 pt-4">
-                     <span className="text-lg font-medium text-[#171a20]">
-                       ${product.price.toLocaleString()}
-                     </span>
-                     <span className="text-xs font-bold uppercase tracking-wide flex items-center gap-1 group-hover:gap-2 transition-all">
-                       View Details <ArrowRight className="w-3 h-3" />
-                     </span>
-                   </div>
-                 </Link>
-               ))
-             ) : (
-               <div className="col-span-full py-24 text-center border-2 border-dashed border-gray-200 rounded-lg">
-                 <p className="text-gray-400">No curated products available in this system yet.</p>
-               </div>
-             )}
-           </div>
+            {/* Section 5: Guidance Prompt */}
+            <div className="mt-16 p-8 bg-alabaster border border-black/5">
+              <h3 className="h2 text-xl mb-2">Need guidance on {systemData.name}?</h3>
+              <p className="text-muted mb-4">Review our decision frameworks to ensure fit and suitability.</p>
+              <Link href={`/guidance`} className="text-sm font-bold border-b border-black pb-0.5 hover:opacity-70">
+                View Guidance Hub
+              </Link>
+            </div>
+          </main>
         </div>
       </div>
     </div>

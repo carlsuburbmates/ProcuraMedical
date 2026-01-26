@@ -32,11 +32,14 @@ export function Hero() {
 
       {/* Top Content (Header) */}
       <motion.div style={{ opacity }} className="z-10 text-center fade-in pt-16 max-w-4xl px-6">
-        <h1 className="text-5xl md:text-7xl font-medium text-white mb-3 tracking-tight drop-shadow-lg">
+        <span className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-white/80 mb-4 block">
           Procura Medical
-        </h1>
-        <p className="text-sm md:text-xl text-gray-200 font-normal tracking-wide drop-shadow-md">
+        </span>
+        <h1 className="text-5xl md:text-7xl font-medium text-white mb-6 tracking-tight drop-shadow-lg">
           Advanced Care Infrastructure
+        </h1>
+        <p className="text-lg md:text-xl text-gray-200 font-normal tracking-wide drop-shadow-md max-w-2xl mx-auto">
+          Procurement infrastructure for NDIS participants, plan managers, and clinicians.
         </p>
       </motion.div>
 
@@ -44,21 +47,22 @@ export function Hero() {
       <motion.div style={{ opacity }} className="z-10 w-full px-6 fade-in delay-500">
         <div className="flex flex-col md:flex-row justify-center gap-4 max-w-lg mx-auto">
           <button 
-            onClick={() => openModal('C101 Seating Platform', '1450.00', '05_123_0103_1_2')} 
+            onClick={() => {
+              document.getElementById('systems-overview')?.scrollIntoView({ behavior: 'smooth' });
+            }}
             className="w-full md:w-64 py-3 text-sm font-bold uppercase tracking-wide bg-white text-[#171a20] border-2 border-white rounded-[4px] transition-all duration-200 hover:bg-[#e2e2e2] hover:border-[#e2e2e2] hover:scale-[1.02]"
           >
-            Start Procurement
+            Explore systems
           </button>
           
-          <button 
-            className="w-full md:w-64 py-3 text-sm font-bold uppercase tracking-wide bg-black/40 text-white backdrop-blur-xl border-2 border-white/30 rounded-[4px] transition-all duration-200 hover:bg-[#1e1e1e]/60 hover:border-white hover:scale-[1.02]"
+          <Link 
+            href="/how-it-works"
+            className="w-full md:w-64 py-3 text-sm font-bold uppercase tracking-wide bg-black/40 text-white backdrop-blur-xl border-2 border-white/30 rounded-[4px] transition-all duration-200 hover:bg-[#1e1e1e]/60 hover:border-white hover:scale-[1.02] flex items-center justify-center"
           >
-            View Specifications
-          </button>
+            How it works
+          </Link>
         </div>
-        <p className="text-[11px] text-center text-gray-300 mt-8 font-medium tracking-wide">
-          Instant NDIS Invoicing & Card Payment Available. Code <span className="text-white font-bold">05_123_0103</span>.
-        </p>
+        {/* Removed NDIS Code Microcopy as per SSOT "No invoice/funding/NDIS language in homepage hero" constraint */}
       </motion.div>
     </section>
   );

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/layout/header";
+import { HeaderNav } from "@/components/layout/header-nav";
 import { Footer } from "@/components/layout/footer";
 
 const geistSans = Geist({
@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Procura Medical | Premium NDIS Procurement",
-  description: "Simplifying access to world-class healthcare systems for NDIS participants.",
+  title: "Procura Medical | Advanced Care Infrastructure",
+  description: "Procurement-ready infrastructure for hygiene, mobility, and rehabilitation.",
 };
 
 export default function RootLayout({
@@ -29,8 +29,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}
       >
-        <Header />
-        <main className="flex-grow">
+        <HeaderNav />
+        <main className="flex-grow pt-24">
           {children}
         </main>
         <Footer />

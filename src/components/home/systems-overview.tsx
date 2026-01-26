@@ -5,14 +5,14 @@ import { ArrowRight } from "lucide-react";
 
 export function SystemsOverview() {
   return (
-    <section className="min-h-[100dvh] w-full relative flex flex-col items-center justify-center py-20 overflow-hidden bg-[#F4F5F4] snap-start">
+    <section id="systems-overview" className="min-h-[100dvh] w-full relative flex flex-col items-center justify-center py-20 overflow-hidden bg-[#F4F5F4] snap-start">
       <div className="container-wide w-full mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
         <div>
           <h2 className="text-5xl md:text-7xl font-medium text-[#050505] mb-6 tracking-tighter">
-            Procura Medical
+            Systems
           </h2>
           <p className="text-lg text-[#555] font-light max-w-xl leading-relaxed">
-            We organise products by the problems they solve
+            Healthcare systems designed for reliability and compliance.
           </p>
         </div>
         <Link href="/systems" className="hidden md:flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#050505] hover:opacity-50 transition-opacity">

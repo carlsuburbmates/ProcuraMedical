@@ -8,7 +8,7 @@ export function FeaturedProducts() {
     <section className="min-h-[80vh] w-full relative flex flex-col items-center justify-center py-24 overflow-hidden bg-white snap-start">
       <div className="z-10 text-center fade-in mb-20 max-w-2xl px-6">
         <h2 className="text-4xl md:text-5xl font-medium text-[#050505] mb-4 tracking-tight">
-          Featured Systems
+          Featured products
         </h2>
         <p className="text-lg text-[#555] font-normal">
           A small selection of commonly chosen systems.
@@ -49,7 +49,8 @@ export function FeaturedProducts() {
                 <h3 className="font-medium text-[#050505] text-lg mb-1">{product.name}</h3>
                 <span className="text-sm text-[#555]">From {product.price}</span>
               </div>
-              <div className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:border-black transition-colors">
+              <div className="h-8 px-4 rounded-full border border-gray-200 flex items-center justify-center gap-2 group-hover:bg-black group-hover:border-black transition-colors">
+                 <span className="text-xs font-bold uppercase tracking-wider text-black group-hover:text-white transition-colors">View details</span>
                  <ArrowRight className="w-4 h-4 text-black group-hover:text-white transition-colors" />
               </div>
             </div>

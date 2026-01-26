@@ -4,31 +4,31 @@
   --color-background: var(--bg-alabaster);
   --color-foreground: var(--text-main);
   --color-muted: var(--text-muted);
-  --color-accent: var(--accent-green);
+  --color-accent: var(--text-main); /* Monochrome authority */
   
   --font-sans: var(--font-inter);
   
-  --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-scale-in: scaleIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in-up: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-scale-in: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   
   @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
   
   @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.98); }
+    from { opacity: 0; transform: scale(0.99); }
     to { opacity: 1; transform: scale(1); }
   }
 }
 
 :root {
-  /* Ultra-Premium Palette */
-  --bg-alabaster: #F4F5F4; /* Slightly cooler, more stone-like */
+  /* AUTHORITY PALETTE (Tesla-like) */
+  --bg-alabaster: #F4F5F4; /* Cold, technical stone */
   --bg-pure: #FFFFFF;
-  --text-main: #050505;    /* Ink black, not grey-black */
-  --text-muted: #555555;   /* Neutral grey */
-  --accent-green: #2E4033; /* Deep forest/botanical green, much more sophisticated than bright green */
+  --text-main: #050505;    /* Ink Black */
+  --text-muted: #595959;   /* Technical Grey */
+  --border-subtle: #E5E5E5;
   
   --font-inter: 'Inter', system-ui, sans-serif;
 }
@@ -36,7 +36,6 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -44,48 +43,54 @@
   body {
     background-color: var(--bg-alabaster);
     color: var(--text-main);
-    letter-spacing: -0.015em; /* Tighter tracking for premium feel */
+    letter-spacing: -0.02em; /* Tighter tracking for authority */
   }
-
-  /* Typography Hierarchy - Swiss Style */
+  
+  /* Typography Hierarchy - Information Density */
   h1, .h1 {
     font-weight: 500;
     letter-spacing: -0.03em;
-    line-height: 1.1;
+    line-height: 1.05;
   }
   
   h2, .h2 {
     font-weight: 500;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 
   p {
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.5;
     letter-spacing: -0.01em;
+    color: var(--text-muted);
   }
 }
 
 @layer components {
-  /* Million Dollar Buttons */
+  /* COMPONENT: CTAButton (Primary) */
   .btn-primary {
-    @apply h-12 px-8 bg-[#050505] text-white text-[13px] font-semibold uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-[#222] hover:scale-[1.02] flex items-center justify-center shadow-lg hover:shadow-xl active:scale-95;
-  }
-
-  .btn-secondary {
-    @apply h-12 px-8 bg-white border border-[#E5E5E5] text-[#050505] text-[13px] font-semibold uppercase tracking-widest rounded-full transition-all duration-300 hover:border-[#050505] hover:bg-transparent flex items-center justify-center active:scale-95;
+    @apply h-11 px-6 bg-[#050505] text-white text-[13px] font-medium transition-all duration-200 hover:bg-[#222] flex items-center justify-center tracking-wide min-w-[140px];
   }
   
-  .btn-glass {
-    @apply h-12 px-8 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[13px] font-semibold uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-white/20 flex items-center justify-center;
+  /* COMPONENT: CTAButton (Secondary) */
+  .btn-secondary {
+    @apply h-11 px-6 bg-transparent border border-black/20 text-[#050505] text-[13px] font-medium transition-all duration-200 hover:border-[#050505] hover:bg-transparent flex items-center justify-center tracking-wide min-w-[140px];
+  }
+  
+  /* Utilities */
+  .container-wide {
+    @apply max-w-[1600px] mx-auto px-6 md:px-12;
   }
 
-  /* Utility */
-  .container-wide {
-    @apply max-w-[1800px] mx-auto px-4 md:px-8;
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-6 md:px-12;
+  }
+  
+  .glass-header {
+    @apply bg-white/85 backdrop-blur-md border-b border-black/5;
   }
   
   .glass-panel {
-    @apply bg-white/80 backdrop-blur-xl border border-white/40 shadow-sm;
+    @apply bg-white border border-black/5 shadow-sm;
   }
 }

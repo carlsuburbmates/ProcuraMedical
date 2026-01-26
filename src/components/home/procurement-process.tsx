@@ -21,9 +21,10 @@ export function ProcurementProcess() {
 
            <div className="space-y-8">
               {[
-                { title: "Select System", desc: "Choose a product that fits your clinical needs." },
+                { title: "Select Product", desc: "Choose a product that fits your clinical needs." },
+                { title: "Confirm Fit", desc: "Verify dimensions and clearance compatibility." },
                 { title: "Choose Funding", desc: "Plan Managed (Invoice) or Self Managed (Card)." },
-                { title: "We Handle The Rest", desc: "We generate compliant paperwork and dispatch." }
+                { title: "Track Status", desc: "We generate paperwork and update you daily." }
               ].map((step, i) => (
                 <div key={i} className="flex gap-6 group">
                    <div className="flex-shrink-0 w-12 h-12 rounded-full border border-gray-300 text-[#050505] flex items-center justify-center font-bold text-lg group-hover:bg-black group-hover:text-white group-hover:border-black transition-colors">

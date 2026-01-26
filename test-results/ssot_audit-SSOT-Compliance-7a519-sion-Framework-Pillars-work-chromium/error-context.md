@@ -1,0 +1,97 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Procura Medical" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e5]:
+        - button "Systems" [ref=e7]:
+          - text: Systems
+          - img [ref=e8]
+        - link "Guidance" [ref=e10] [cursor=pointer]:
+          - /url: /guidance
+        - link "How it works" [ref=e11] [cursor=pointer]:
+          - /url: /how-it-works
+        - link "Support" [ref=e12] [cursor=pointer]:
+          - /url: /contact
+        - button [ref=e13]:
+          - img [ref=e14]
+  - main [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - heading "Decision Framework" [level=1] [ref=e20]
+        - paragraph [ref=e21]: Procura Medical defines infrastructure by constraints, not claims. Use these frameworks to confirm requirements before proceeding.
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - img [ref=e25]
+          - heading "Fit & Clearance" [level=3] [ref=e31]
+          - paragraph [ref=e32]: The physical requirements that must be confirmed before procurement.
+        - generic [ref=e33]:
+          - img [ref=e35]
+          - heading "Safety & Load" [level=3] [ref=e37]
+          - paragraph [ref=e38]: Match load ratings and stability to real use conditions.
+        - generic [ref=e39]:
+          - img [ref=e41]
+          - heading "Daily Workflow" [level=3] [ref=e44]
+          - paragraph [ref=e45]: Ensure the equipment works every day, not just on paper.
+        - generic [ref=e46]:
+          - img [ref=e48]
+          - heading "Future Proofing" [level=3] [ref=e53]
+          - paragraph [ref=e54]: Account for adjustment, serviceability, and change over time.
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - heading "How to use this" [level=3] [ref=e57]
+          - list [ref=e58]:
+            - listitem [ref=e59]: Review constraints
+            - listitem [ref=e61]: Confirm requirements
+            - listitem [ref=e63]: Proceed when ready
+        - link "Explore Systems" [ref=e66] [cursor=pointer]:
+          - /url: /systems
+          - text: Explore Systems
+          - img [ref=e67]
+      - generic [ref=e69]:
+        - paragraph [ref=e70]: Need clarification?
+        - link "Contact Support" [ref=e71] [cursor=pointer]:
+          - /url: /contact
+  - contentinfo [ref=e72]:
+    - generic [ref=e73]:
+      - generic [ref=e74]:
+        - generic [ref=e75]: Procura Medical
+        - paragraph [ref=e76]: Advanced infrastructure for hygiene, mobility, and rehabilitation. Procurement-ready for NDIS participants.
+      - generic [ref=e77]:
+        - heading "Systems" [level=4] [ref=e78]
+        - link "Hygiene" [ref=e79] [cursor=pointer]:
+          - /url: /systems/hygiene
+        - link "Mobility" [ref=e80] [cursor=pointer]:
+          - /url: /systems/mobility
+        - link "Rehab" [ref=e81] [cursor=pointer]:
+          - /url: /systems/rehab
+      - generic [ref=e82]:
+        - heading "Company" [level=4] [ref=e83]
+        - link "About" [ref=e84] [cursor=pointer]:
+          - /url: /about
+        - link "Support" [ref=e85] [cursor=pointer]:
+          - /url: /contact
+        - link "How it works" [ref=e86] [cursor=pointer]:
+          - /url: /how-it-works
+        - link "FAQ" [ref=e87] [cursor=pointer]:
+          - /url: /faq
+      - generic [ref=e88]:
+        - heading "Legal" [level=4] [ref=e89]
+        - link "Shipping" [ref=e90] [cursor=pointer]:
+          - /url: /shipping
+        - link "Returns" [ref=e91] [cursor=pointer]:
+          - /url: /returns
+        - link "Privacy Policy" [ref=e92] [cursor=pointer]:
+          - /url: /privacy
+        - link "Terms of Service" [ref=e93] [cursor=pointer]:
+          - /url: /terms
+    - generic [ref=e94]:
+      - paragraph [ref=e95]: © 2026 Procura Medical. All rights reserved. ABN [PENDING].
+      - paragraph [ref=e96]: Australian Owned & Operated.
+  - button "Open Next.js Dev Tools" [ref=e102] [cursor=pointer]:
+    - img [ref=e103]
+  - alert [ref=e106]
+```
